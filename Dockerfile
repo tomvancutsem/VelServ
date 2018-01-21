@@ -12,6 +12,6 @@ apt-get update && \
 apt-get -y install gcc && \
 gcc -o /config/velserv /config/velserv.c -lpthread
 
-RUN mkdir -p /etc/my_init.d && \
+RUN mkdir -p /etc/my_init.d
 COPY startVelServ.sh /etc/my_init.d/startVelServ.sh
 RUN chmod +x /etc/my_init.d/startVelServ.sh
