@@ -1,9 +1,18 @@
 FROM phusion/baseimage:0.9.22
 
+MAINTAINER tomvancutsem
+
 VOLUME ["/config"]
 
-EXPOSE 6000
+EXPOSE 3788
 
+ADD velserv.c /config
 RUN echo $TZ > /etc/timezone && \
-export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
-apt-get update
+apt-get update && \
+apt-get -y install gcc && \
+cd config && \
+gcc -o velserv velserv.c -lpthread
+
+RUN mkdir -p /etc/my_init.d && \
+ADD startVelServ.sh /etc/my_init.d/startVelServ.sh
+RUN chmod +x /etc/my_init.d/startVelServ.sh
