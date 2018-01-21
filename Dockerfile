@@ -6,11 +6,13 @@ VOLUME ["/config"]
 
 EXPOSE 3788
 
-ADD velserv.c /config/velserv.c
 RUN echo $TZ > /etc/timezone && \
 apt-get update && \
 apt-get -y install gcc && \
-gcc -o /config/velserv /config/velserv.c -lpthread
+mkdir -p /opt/velbus
+
+ADD velserv.c /config/velserv.c
+RUN gcc -o /opt/velbus/velserv /opt/velbus/velserv.c -lpthread
 
 RUN mkdir -p /etc/my_init.d
 ADD startVelServ.sh /etc/my_init.d/startVelServ.sh
