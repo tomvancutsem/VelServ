@@ -6,7 +6,7 @@ VOLUME ["/config"]
 
 EXPOSE 3788
 
-COPY velserv.c /config
+COPY velserv.c /config/velserv.c
 RUN echo $TZ > /etc/timezone && \
 apt-get update && \
 apt-get -y install gcc && \
