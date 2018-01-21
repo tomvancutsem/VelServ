@@ -10,8 +10,7 @@ COPY velserv.c /config
 RUN echo $TZ > /etc/timezone && \
 apt-get update && \
 apt-get -y install gcc && \
-cd config && \
-gcc -o velserv velserv.c -lpthread
+gcc -o /config/velserv /config/velserv.c -lpthread
 
 RUN mkdir -p /etc/my_init.d && \
 COPY startVelServ.sh /etc/my_init.d/startVelServ.sh
