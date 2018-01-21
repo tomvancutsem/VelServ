@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo "Starting controller"
-/config/velserv
+/opt/velbus/velserv
