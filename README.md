@@ -1,2 +1,2 @@
 # VelServ
-VelServ for unraid
+VelServ server for unraid
